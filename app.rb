@@ -3,7 +3,7 @@ require 'sinatra/base'
 class BookmarkManager < Sinatra::Base
 
   get '/' do
-    "I'm an APP!"
+    erb(:links)
   end
 
   run! if app_file == $0
