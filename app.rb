@@ -1,9 +1,11 @@
 require 'sinatra/base'
+require './lib/link'
 
 class BookmarkManager < Sinatra::Base
 
   get '/' do
-    erb(:links)
+    @links = Link.all
+    erb(:index)
   end
 
   run! if app_file == $0
