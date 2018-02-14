@@ -10,4 +10,11 @@ describe Link do
       expect(links).to include("http://www.facebook.com")
     end
   end
+
+  describe '#.add' do
+    it 'creates a new link' do
+      Link.add(url: 'http://www.instagram.com')
+      expect(Link.all).to include 'http://www.instagram.com'
+    end
+  end
 end
