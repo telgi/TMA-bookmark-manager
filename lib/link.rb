@@ -1,4 +1,4 @@
-require 'database_connection'
+require_relative 'database_connection'
 
 class Link
 
@@ -7,6 +7,6 @@ class Link
   end
 
   def self.add(new_link)
-    DatabaseConnection.query("INSERT INTO links (url) VALUES('#{new_link[:url]}')")
+    DatabaseConnection.query("INSERT INTO links (url) VALUES('#{new_link}')")
   end
 end
