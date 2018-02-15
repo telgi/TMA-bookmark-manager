@@ -1,3 +1,10 @@
+<% flash.keys.each do |type| %>
+ <div data-alert class="flash <%= type %> alert-box radius" style="color: red">
+   <%= flash[type] %>
+   <a href="/" class="close">&times;</a>
+ </div>
+<% end %>
+
 <h1>Welcome to Bookmark Manager<h1>
 
 <form action="/add_link" method="post">
@@ -10,12 +17,3 @@
   <li><%= link %></li>
   <%end%>
 </ul>
-
-<% if true %>
-  <% flash.keys.each do |type| %>
-   <div data-alert class="flash <%= type %> alert-box radius">
-     <%= flash[type] %>
-     <a href="#" class="close">&times;</a>
-   </div>
-  <% end %>
-<% end %>
