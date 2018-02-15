@@ -25,7 +25,6 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'rake'
-require File.join(File.dirname(__FILE__), '..', 'Rakefile.rb')
 
 
 # Tell Capybara to talk to BookmarkManager
