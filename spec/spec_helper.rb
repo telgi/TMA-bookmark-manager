@@ -25,6 +25,8 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'rake'
+require File.join(File.dirname(__FILE__), '..', 'Rakefile.rb')
+
 
 # Tell Capybara to talk to BookmarkManager
 Capybara.app = BookmarkManager
@@ -33,7 +35,7 @@ Rake.application.load_rakefile
 
 RSpec.configure do |config|
   config.before(:each) do
-    Rake::Task['setup_test_database'].execute
+    Rake::Task[:setup_test_database].execute
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

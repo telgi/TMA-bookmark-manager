@@ -3,8 +3,7 @@ require 'database_connection'
 class Link
 
   def self.all
-    result = DatabaseConnection.query("SELECT * FROM links")
-    result.map { |link| link['url'] }
+    DatabaseConnection.query("SELECT url FROM links")
   end
 
   def self.add(new_link)
