@@ -13,15 +13,15 @@ describe Link do
     context 'user inputs invalid URL' do
       it 'raises error' do
         message = 'This is not a valid URL'
-        expect{described_class.add('thisisntawebsite')}.to raise_error(message)
+        expect { described_class.add(345) }.to raise_error(message)
       end
     end
   end
 
   describe '#::add' do
     it 'creates a new link' do
-      described_class.add('http://www.instagram.com')
-      expect(described_class.all).to include ['http://www.instagram.com']
+      described_class.add('https://www.instagram.com')
+      expect(described_class.all).to include ['https://www.instagram.com']
     end
   end
 end
