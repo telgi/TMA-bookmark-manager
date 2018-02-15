@@ -1,21 +1,23 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require './lib/link'
 require './spec/database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
 
-  get '/' do
-    erb(:index)
-  end
+  register Sinatra::Flash
 
-  get '/links' do
+  enable :sessions
+
+  get '/' do
     @links = Link.all
-    erb(:links)
+    flash[:warning] = 'Hooray, Dan sucks!'
+    erb(:index)
   end
 
   post '/add_link' do
     Link.add(params[:url])
-    redirect '/links'
+    redirect '/'
   end
 
   run! if app_file == $0

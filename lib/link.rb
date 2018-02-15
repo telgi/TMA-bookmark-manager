@@ -12,8 +12,6 @@ class Link
     DatabaseConnection.query("INSERT INTO links (url) VALUES('#{new_link}')")
   end
 
-  private
-
   def self.error_check(new_link)
     raise "This is not a valid URL" unless valid_url?(new_link)
   end
