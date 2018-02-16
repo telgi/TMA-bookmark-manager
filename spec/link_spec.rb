@@ -1,7 +1,6 @@
 require 'link'
 
 describe Link do
-
   it 'has instance of Link class' do
     expect(described_class.all).to include Link
   end

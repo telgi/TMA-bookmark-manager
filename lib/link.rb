@@ -1,8 +1,7 @@
 require_relative 'database_connection'
 require 'uri'
-
+# establishes access to link objects via use of rows
 class Link
-
   attr_reader :id, :url, :title
 
   def initialize(row)
@@ -12,7 +11,7 @@ class Link
   end
 
   def self.all
-    result = DatabaseConnection.query("SELECT * FROM links")
+    result = DatabaseConnection.query('SELECT * FROM links')
     @array = []
     result.each_row { |row| @array.push(Link.new(row)) }
     @array
@@ -20,11 +19,12 @@ class Link
 
   def self.add(new_link, title)
     error_check(new_link)
-    DatabaseConnection.query("INSERT INTO links (url, title) VALUES('#{new_link}', '#{title}')")
+    links = "INSERT INTO links (url, title) VALUES('#{new_link}', '#{title}')"
+    DatabaseConnection.query(links)
   end
 
   def self.error_check(new_link)
-    raise "This is not a valid URL" unless valid_url?(new_link)
+    raise 'This is not a valid URL' unless valid_url?(new_link)
   end
 
   def self.valid_url?(new_link)
