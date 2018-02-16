@@ -1,8 +1,7 @@
-feature "viewing links" do
-  scenario "User can see links" do
+feature "displays list of bookmarks" do
+  scenario "User can see bookmark titles" do
     visit '/'
-    expect(page).to have_content "http://www.makersacademy.com"
-    expect(page).to have_content "http://www.google.com"
-    expect(page).to have_content "http://www.facebook.com"
+    expect(page).to have_content "makersacademy"
+    expect(page).to have_content "google"
   end
 end

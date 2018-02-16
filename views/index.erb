@@ -1,19 +1,20 @@
-<% flash.keys.each do |type| %>
- <div data-alert class="flash <%= type %> alert-box radius" style="color: red">
-   <%= flash[type] %>
-   <a href="/" class="close">&times;</a>
- </div>
-<% end %>
-
 <h1>Welcome to Bookmark Manager<h1>
 
+  <% flash.keys.each do |type| %>
+   <div data-alert class="flash <%= type %> alert-box radius" style="color: red">
+     <%= flash[type] %>
+     <a href="/" class="close">&times;</a>
+   </div>
+  <% end %>
+
 <form action="/add_link" method="post">
-  <input type="text" name="url">
+  <input type="text" name="title" placeholder="Add title">
+  <input type="text" name="url" placeholder="Add URL">
   <input type="submit" value="Add link">
 </form>
 
 <ul>
   <% @links.each do |link| %>
-  <li><%= link %></li>
+  <li><%= link.title %></li>
   <%end%>
 </ul>

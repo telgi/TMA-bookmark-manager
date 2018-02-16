@@ -22,10 +22,10 @@ describe DatabaseConnection do
   end
 
   describe '#::query' do
-    it 'outputs the expected result' do
-      described_class.setup('bookmark_manager_test')
-      query_string = "SELECT url FROM links LIMIT 1"
-      expect(described_class.query(query_string)).to eq ([['http://www.makersacademy.com']])
+    it 'executes a query' do
+      connection = described_class.setup('bookmark_manager_test')
+      expect(connection).to receive(:exec).with("SELECT * FROM links")
+      DatabaseConnection.query("SELECT * FROM links")
     end
   end
 end

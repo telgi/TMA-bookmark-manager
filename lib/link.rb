@@ -3,13 +3,24 @@ require 'uri'
 
 class Link
 
-  def self.all
-    DatabaseConnection.query("SELECT url FROM links")
+  attr_reader :id, :url, :title
+
+  def initialize(row)
+    @id = row[0]
+    @url = row[1]
+    @title = row[2]
   end
 
-  def self.add(new_link)
+  def self.all
+    result = DatabaseConnection.query("SELECT * FROM links")
+    @array = []
+    result.each_row { |row| @array.push(Link.new(row)) }
+    @array
+  end
+
+  def self.add(new_link, title)
     error_check(new_link)
-    DatabaseConnection.query("INSERT INTO links (url) VALUES('#{new_link}')")
+    DatabaseConnection.query("INSERT INTO links (url, title) VALUES('#{new_link}', '#{title}')")
   end
 
   def self.error_check(new_link)
